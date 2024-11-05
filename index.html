@@ -4,28 +4,30 @@
     <title>Missing No More</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/htmx.org@1.5.0/dist/htmx.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.3" integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq" crossorigin="anonymous"></script>
 </head>
 <body class="bg-gray-100 h-screen flex flex-col">
 
     <!-- Header with title and About link -->
     <header class="bg-white shadow-lg p-4 flex justify-between items-center">
         <h1 class="text-2xl font-semibold text-gray-800">Missing No More</h1>
-        <a href="#about" class="text-blue-500 hover:underline" hx-get="/about" hx-target="#aboutModal" hx-trigger="click">About</a>
+        <a href="#about" class="text-blue-500 hover:underline" hx-on:click="htmx.toggleClass('#aboutModal', 'hidden')">About</a>
     </header>
 
     <!-- Main map container -->
     <div style="z-index: 1" id="map" class="flex-1"></div>
 
     <!-- About Modal (Hidden by default) -->
-    <div style="z-index: 2" id="aboutModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center ">
+    <div style="z-index: 2" id="aboutModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
         <div class="bg-white rounded-lg p-6 shadow-lg w-1/2 max-w-md">
             <button onclick="document.getElementById('aboutModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
                 &times;
             </button>
             <h2 class="text-lg font-semibold mb-4">About Missing No More</h2>
             <div id="aboutContent" class="text-gray-700">
-                <!-- Content will be loaded here dynamically by HTMX -->
+                <p>Missing No More is an initiative to document where missing persons have been found across Cyprus. Our mission is to help families and communities have closure.</p>
+                <br>
+                <p>Each marker on the map represents a location where someone has been found. Click the markers to learn more.</p>
             </div>
         </div>
     </div>
@@ -33,6 +35,6 @@
     <!-- Leaflet Map Library -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <!-- Custom JavaScript for map initialization -->
-    <script src="/map.js"></script>
+    <script src="map.js"></script>
 </body>
 </html>
