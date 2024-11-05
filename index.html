@@ -15,10 +15,10 @@
     </header>
 
     <!-- Main map container -->
-    <div id="map" class="flex-1"></div>
+    <div style="z-index: 1" id="map" class="flex-1"></div>
 
     <!-- About Modal (Hidden by default) -->
-    <div id="aboutModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+    <div style="z-index: 2" id="aboutModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center ">
         <div class="bg-white rounded-lg p-6 shadow-lg w-1/2 max-w-md">
             <button onclick="document.getElementById('aboutModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
                 &times;
@@ -33,6 +33,6 @@
     <!-- Leaflet Map Library -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <!-- Custom JavaScript for map initialization -->
-    <script src="js/map.js"></script>
+    <script src="/map.js"></script>
 </body>
 </html>
